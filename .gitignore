@@ -1,0 +1,7 @@
+.idea/
+.import/
+.mono/
+data_*/
+Exports/
+export.cfg
+export_presets.cfg
