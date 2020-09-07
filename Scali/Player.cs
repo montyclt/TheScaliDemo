@@ -8,10 +8,16 @@ namespace TheScaliDemo.Scali
         private float Velocity { get; set; }
 
         private Sprite _sprite;
+        private Texture _regularTexture;
+        private Texture _happyTexture;
+        private Texture _veryHappyTexture;
 
         public override void _Ready()
         {
             _sprite = GetNode<Sprite>("Sprite");
+            _regularTexture = GD.Load<Texture>("res://Scali/Sprites/regular.jpg");
+            _happyTexture = GD.Load<Texture>("res://Scali/Sprites/happy.png");
+            _veryHappyTexture = GD.Load<Texture>("res://Scali/Sprites/very-happy.png");
         }
 
         public override void _PhysicsProcess(float delta)
@@ -24,15 +30,17 @@ namespace TheScaliDemo.Scali
 
         public void BeHappy()
         {
-            // I'm not sure that is a good idea load the texture when the player become happy
-            // or preload into a texture field and set it when player become happy.
-
-            _sprite.Texture = GD.Load<Texture>("res://Scali/Sprites/happy.png");
+            _sprite.Texture = _happyTexture;
         }
 
         public void BeVeryHappy()
         {
-            _sprite.Texture = GD.Load<Texture>("res://Scali/Sprites/very-happy.png");
+            _sprite.Texture = _veryHappyTexture;
+        }
+
+        public void BeRegular()
+        {
+            _sprite.Texture = _regularTexture;
         }
     }
 }

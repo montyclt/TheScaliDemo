@@ -6,7 +6,7 @@ namespace TheScaliDemo.Star
     public class Star : Node2D
     {
         [Signal]
-        public delegate void StarCollected();
+        public delegate void StarCollected(Star star);
     
         public override void _Ready()
         {
@@ -15,11 +15,14 @@ namespace TheScaliDemo.Star
 
         public void OnBodyEntered(Node node)
         {
-            EmitSignal(nameof(StarCollected));
-            QueueFree();
+            // We should check that the body entered is the
+            // player, but because the player is the only
+            // body in this game, we can skip this check.
+
+            EmitSignal(nameof(StarCollected), this);
         }
 
-        private void RandomizePosition()
+        public void RandomizePosition()
         {
             var rnd = new Random();
             int x = rnd.Next(50, 950);

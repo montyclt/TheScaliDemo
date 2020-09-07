@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scali/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/Fonts/Ace Records.ttf" type="DynamicFontData" id=2]
@@ -13,6 +13,12 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=3]
+size = 33
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
 [node name="Game" type="Node2D"]
 script = ExtResource( 3 )
 __meta__ = {
@@ -21,6 +27,7 @@ __meta__ = {
 }
 PointsToHappy = 10
 PointsToVeryHappy = 20
+InitialSeconds = 25
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 75, 135 )
@@ -70,6 +77,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Timer" type="Label" parent="UI"]
+margin_left = 694.011
+margin_top = 10.5595
+margin_right = 1013.01
+margin_bottom = 53.5595
+custom_fonts/font = SubResource( 2 )
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Points of Fantasy label" type="Label" parent="UI"]
 margin_left = 60.5303
 margin_top = 10.5595
@@ -77,6 +95,38 @@ margin_right = 379.53
 margin_bottom = 53.5595
 custom_fonts/font = SubResource( 2 )
 text = "Points of Fantasy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOver" type="Control" parent="UI"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOver Label" type="Label" parent="UI/GameOver"]
+margin_left = 220.676
+margin_top = 124.726
+margin_right = 816.676
+margin_bottom = 213.726
+custom_fonts/font = SubResource( 2 )
+text = "Game Over"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Press key to restart" type="Label" parent="UI/GameOver"]
+margin_left = 228.694
+margin_top = 189.761
+margin_right = 824.694
+margin_bottom = 278.761
+custom_fonts/font = SubResource( 3 )
+text = "Press Spacebar or Enter to restart."
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
